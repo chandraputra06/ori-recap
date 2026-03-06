@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NetflixAccountsController;
+use App\Http\Controllers\NetflixWeekAccountController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,4 +19,5 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     })->name('dashboard');
 
     Route::resource('/netflix-accounts', NetflixAccountsController::class);
+    Route::resource('/netflix-week-accounts', NetflixWeekAccountController::class);
 });

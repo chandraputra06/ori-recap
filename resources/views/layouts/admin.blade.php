@@ -34,11 +34,11 @@
                     Rekapan Netflix
                 </a>
 
-                <a href="#"
+                <a href="{{ route('admin.netflix-week-accounts.index') }}"
                     class="block rounded-lg px-4 py-2.5 font-medium transition
-           {{ request()->routeIs('admin.netflix-week-accounts.*')
-               ? 'bg-[#7B1E1E]/10 text-[#7B1E1E]'
-               : 'text-gray-700 hover:bg-[#7B1E1E]/10 hover:text-[#7B1E1E]' }}">
+                {{ request()->routeIs('admin.netflix-week-accounts.*')
+                    ? 'bg-[#7B1E1E]/10 text-[#7B1E1E]'
+                    : 'text-gray-700 hover:bg-[#7B1E1E]/10 hover:text-[#7B1E1E]' }}">
                     Netflix 1 Week
                 </a>
 
