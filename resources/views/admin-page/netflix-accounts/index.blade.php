@@ -91,7 +91,20 @@
                             <tr class="hover:bg-gray-50">
                                 <td class="px-4 py-3">{{ $item->id }}</td>
                                 <td class="px-4 py-3">{{ $item->email }}</td>
-                                <td class="px-4 py-3">{{ $item->password }}</td>
+                                <td class="px-4 py-3">
+                                    <div class="flex items-center gap-2">
+                                        <span id="password-netflix-{{ $item->id }}" data-hidden="••••••••"
+                                            data-full="{{ $item->password }}" class="font-medium text-gray-700">
+                                            ••••••••
+                                        </span>
+
+                                        <button type="button" data-target="password-netflix-{{ $item->id }}"
+                                            onclick="togglePassword(this)"
+                                            class="cursor-pointer rounded-lg border border-[#7B1E1E] px-3 py-1 text-xs font-medium text-[#7B1E1E] hover:bg-[#7B1E1E]/10">
+                                            Lihat
+                                        </button>
+                                    </div>
+                                </td>
                                 <td class="px-4 py-3">
                                     {{ $item->tanggal_reset ? \Carbon\Carbon::parse($item->tanggal_reset)->format('d M Y') : '-' }}
                                 </td>
