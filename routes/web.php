@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NetflixAccountsController;
 use App\Http\Controllers\NetflixWeekAccountController;
+use App\Http\Controllers\ReminderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,4 +20,6 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
 
     Route::resource('/netflix-accounts', NetflixAccountsController::class);
     Route::resource('/netflix-week-accounts', NetflixWeekAccountController::class);
+
+    Route::get('/reminders', [ReminderController::class, 'index'])->name('reminders.index');
 });

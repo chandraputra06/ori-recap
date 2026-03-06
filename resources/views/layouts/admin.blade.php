@@ -42,11 +42,11 @@
                     Netflix 1 Week
                 </a>
 
-                <a href="#"
+                <a href="{{ route('admin.reminders.index') }}"
                     class="block rounded-lg px-4 py-2.5 font-medium transition
-           {{ request()->routeIs('admin.reminders.*')
-               ? 'bg-[#7B1E1E]/10 text-[#7B1E1E]'
-               : 'text-gray-700 hover:bg-[#7B1E1E]/10 hover:text-[#7B1E1E]' }}">
+            {{ request()->routeIs('admin.reminders.*')
+                ? 'bg-[#7B1E1E]/10 text-[#7B1E1E]'
+                : 'text-gray-700 hover:bg-[#7B1E1E]/10 hover:text-[#7B1E1E]' }}">
                     Reminder
                 </a>
             </nav>
@@ -82,6 +82,26 @@
             </main>
         </div>
     </div>
+
+    <script>
+        function togglePassword(button) {
+            const targetId = button.getAttribute('data-target');
+            const passwordText = document.getElementById(targetId);
+
+            if (!passwordText) return;
+
+            const hiddenValue = passwordText.getAttribute('data-hidden');
+            const fullValue = passwordText.getAttribute('data-full');
+
+            if (passwordText.textContent.trim() === hiddenValue) {
+                passwordText.textContent = fullValue;
+                button.textContent = 'Sembunyikan';
+            } else {
+                passwordText.textContent = hiddenValue;
+                button.textContent = 'Lihat';
+            }
+        }
+    </script>
 </body>
 
 </html>

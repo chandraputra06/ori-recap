@@ -44,9 +44,18 @@
                         <label for="password" class="mb-1.5 block text-sm font-medium text-gray-700">
                             Password
                         </label>
-                        <input id="password" type="password" name="password" placeholder="Masukkan password"
-                            class="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-800 outline-none transition focus:border-[#7B1E1E] focus:ring-2 focus:ring-[#7B1E1E]/20"
-                            required>
+
+                        <div class="relative">
+                            <input id="password" type="password" name="password" placeholder="Masukkan password"
+                                class="w-full rounded-xl border border-gray-300 px-4 py-3 pr-28 text-gray-800 outline-none transition focus:border-[#7B1E1E] focus:ring-2 focus:ring-[#7B1E1E]/20"
+                                required>
+
+                            <button type="button" id="toggle-login-password"
+                                class="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer rounded-lg border border-[#7B1E1E] px-3 py-1 text-sm font-medium text-[#7B1E1E] hover:bg-[#7B1E1E]/10">
+                                Lihat
+                            </button>
+                        </div>
+
                         @error('password')
                             <p class="mt-1.5 text-sm text-red-500">{{ $message }}</p>
                         @enderror
@@ -60,6 +69,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const loginPasswordInput = document.getElementById('password');
+        const toggleLoginPasswordButton = document.getElementById('toggle-login-password');
+
+        if (loginPasswordInput && toggleLoginPasswordButton) {
+            toggleLoginPasswordButton.addEventListener('click', function() {
+                const isHidden = loginPasswordInput.type === 'password';
+
+                loginPasswordInput.type = isHidden ? 'text' : 'password';
+                toggleLoginPasswordButton.textContent = isHidden ? 'Sembunyikan' : 'Lihat';
+            });
+        }
+    </script>
 </body>
 
 </html>
