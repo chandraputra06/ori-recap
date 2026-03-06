@@ -1,27 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite('resources/css/app.css')
-    <title>Dashboard - OriRecap</title>
-</head>
-<body class="bg-gray-100">
-    <div class="min-h-screen p-6">
-        <div class="rounded-2xl bg-white p-6 shadow">
-            <h1 class="text-2xl font-bold text-gray-800">Dashboard Admin</h1>
-            <p class="mt-2 text-gray-600">Login berhasil. Nanti di sini kita isi ringkasan data rekapan.</p>
+@extends('layouts.admin')
 
-            <form action="{{ route('logout') }}" method="POST" class="mt-6">
-                @csrf
-                <button
-                    type="submit"
-                    class="rounded-lg bg-red-500 px-4 py-2 text-white hover:bg-red-600"
-                >
-                    Logout
-                </button>
-            </form>
-        </div>
+@section('title', 'Dashboard - OriRecap')
+@section('page-title', 'Dashboard')
+
+@section('content')
+    <div class="rounded-2xl bg-white p-6 shadow-sm">
+        <h3 class="text-xl font-bold text-[#7B1E1E]">Selamat datang di OriRecap</h3>
+        <p class="mt-2 text-gray-600">
+            Login berhasil dan layout admin sudah siap. Setelah ini kita mulai membuat data rekapan Netflix.
+        </p>
     </div>
-</body>
-</html>
+@endsection
