@@ -17,24 +17,36 @@
                 <p class="mt-1 text-sm text-gray-500">Admin Panel</p>
             </div>
 
-            <nav class="space-y-2 p-4 cursor-pointer">
+            <nav class="space-y-2 p-4">
                 <a href="{{ route('admin.dashboard') }}"
-                    class="block rounded-lg bg-[#7B1E1E]/10 px-4 py-2.5 font-medium text-[#7B1E1E]">
+                    class="block rounded-lg px-4 py-2.5 font-medium transition
+           {{ request()->routeIs('admin.dashboard')
+               ? 'bg-[#7B1E1E]/10 text-[#7B1E1E]'
+               : 'text-gray-700 hover:bg-[#7B1E1E]/10 hover:text-[#7B1E1E]' }}">
                     Dashboard
                 </a>
 
-                <a href="#"
-                    class="block rounded-lg px-4 py-2.5 text-gray-700 hover:bg-[#7B1E1E]/10 hover:text-[#7B1E1E]">
+                <a href="{{ route('admin.netflix-accounts.index') }}"
+                    class="block rounded-lg px-4 py-2.5 font-medium transition
+           {{ request()->routeIs('admin.netflix-accounts.*')
+               ? 'bg-[#7B1E1E]/10 text-[#7B1E1E]'
+               : 'text-gray-700 hover:bg-[#7B1E1E]/10 hover:text-[#7B1E1E]' }}">
                     Rekapan Netflix
                 </a>
 
                 <a href="#"
-                    class="block rounded-lg px-4 py-2.5 text-gray-700 hover:bg-[#7B1E1E]/10 hover:text-[#7B1E1E]">
+                    class="block rounded-lg px-4 py-2.5 font-medium transition
+           {{ request()->routeIs('admin.netflix-week-accounts.*')
+               ? 'bg-[#7B1E1E]/10 text-[#7B1E1E]'
+               : 'text-gray-700 hover:bg-[#7B1E1E]/10 hover:text-[#7B1E1E]' }}">
                     Netflix 1 Week
                 </a>
 
                 <a href="#"
-                    class="block rounded-lg px-4 py-2.5 text-gray-700 hover:bg-[#7B1E1E]/10 hover:text-[#7B1E1E]">
+                    class="block rounded-lg px-4 py-2.5 font-medium transition
+           {{ request()->routeIs('admin.reminders.*')
+               ? 'bg-[#7B1E1E]/10 text-[#7B1E1E]'
+               : 'text-gray-700 hover:bg-[#7B1E1E]/10 hover:text-[#7B1E1E]' }}">
                     Reminder
                 </a>
             </nav>
