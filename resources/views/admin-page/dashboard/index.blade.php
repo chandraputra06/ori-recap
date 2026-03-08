@@ -6,47 +6,55 @@
 @section('content')
     <div class="space-y-6">
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-            <div class="rounded-2xl bg-white p-5 shadow-sm">
+            <a href="{{ route('admin.netflix-accounts.index') }}"
+               class="block rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                 <p class="text-sm text-gray-500">Total Rekapan Netflix</p>
                 <h3 class="mt-2 text-3xl font-bold text-[#7B1E1E]">{{ $totalNetflixAccounts }}</h3>
-            </div>
+            </a>
 
-            <div class="rounded-2xl bg-white p-5 shadow-sm">
+            <a href="{{ route('admin.netflix-week-accounts.index') }}"
+               class="block rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                 <p class="text-sm text-gray-500">Total Netflix 1 Week</p>
                 <h3 class="mt-2 text-3xl font-bold text-[#7B1E1E]">{{ $totalNetflixWeekAccounts }}</h3>
-            </div>
+            </a>
 
-            <div class="rounded-2xl bg-white p-5 shadow-sm">
+            <a href="{{ route('admin.reminders.index') }}"
+               class="block rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                 <p class="text-sm text-gray-500">Reset Hari Ini</p>
                 <h3 class="mt-2 text-3xl font-bold text-orange-600">{{ $resetHariIni }}</h3>
-            </div>
+            </a>
 
-            <div class="rounded-2xl bg-white p-5 shadow-sm">
+            <a href="{{ route('admin.reminders.index') }}"
+               class="block rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                 <p class="text-sm text-gray-500">Habis Hari Ini</p>
                 <h3 class="mt-2 text-3xl font-bold text-red-600">{{ $habisHariIni }}</h3>
-            </div>
+            </a>
         </div>
 
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-            <div class="rounded-2xl bg-white p-5 shadow-sm">
+            <a href="{{ route('admin.reminders.index') }}"
+               class="block rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                 <p class="text-sm text-gray-500">Segera Reset</p>
                 <h3 class="mt-2 text-3xl font-bold text-yellow-600">{{ $segeraReset }}</h3>
-            </div>
+            </a>
 
-            <div class="rounded-2xl bg-white p-5 shadow-sm">
+            <a href="{{ route('admin.reminders.index') }}"
+               class="block rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                 <p class="text-sm text-gray-500">Lewat Reset</p>
                 <h3 class="mt-2 text-3xl font-bold text-red-600">{{ $lewatReset }}</h3>
-            </div>
+            </a>
 
-            <div class="rounded-2xl bg-white p-5 shadow-sm">
+            <a href="{{ route('admin.reminders.index') }}"
+               class="block rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                 <p class="text-sm text-gray-500">Segera Habis</p>
                 <h3 class="mt-2 text-3xl font-bold text-yellow-600">{{ $segeraHabis }}</h3>
-            </div>
+            </a>
 
-            <div class="rounded-2xl bg-white p-5 shadow-sm">
+            <a href="{{ route('admin.reminders.index') }}"
+               class="block rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                 <p class="text-sm text-gray-500">Sudah Habis</p>
                 <h3 class="mt-2 text-3xl font-bold text-red-600">{{ $sudahHabis }}</h3>
-            </div>
+            </a>
         </div>
 
         <div class="grid grid-cols-1 gap-6 xl:grid-cols-2">
@@ -78,6 +86,13 @@
                                     {{ \Carbon\Carbon::parse($item->tanggal_reset)->format('d M Y') }}
                                 </span>
                             </p>
+
+                            <div class="mt-4">
+                                <a href="{{ route('admin.netflix-accounts.edit', $item->id) }}"
+                                   class="inline-flex rounded-lg bg-[#7B1E1E] px-3 py-2 text-xs font-medium text-white hover:opacity-90">
+                                    Edit
+                                </a>
+                            </div>
                         </div>
                     @empty
                         <div class="rounded-xl border border-dashed border-gray-300 p-4 text-sm text-gray-500">
@@ -118,6 +133,13 @@
                                     {{ \Carbon\Carbon::parse($item->durasi_habis)->format('d M Y') }}
                                 </span>
                             </p>
+
+                            <div class="mt-4">
+                                <a href="{{ route('admin.netflix-week-accounts.edit', $item->id) }}"
+                                   class="inline-flex rounded-lg bg-[#7B1E1E] px-3 py-2 text-xs font-medium text-white hover:opacity-90">
+                                    Edit
+                                </a>
+                            </div>
                         </div>
                     @empty
                         <div class="rounded-xl border border-dashed border-gray-300 p-4 text-sm text-gray-500">
