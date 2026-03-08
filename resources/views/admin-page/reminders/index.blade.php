@@ -22,6 +22,18 @@
                                         {{ \Carbon\Carbon::parse($item->tanggal_reset)->format('d M Y') }}
                                     </span>
                                 </p>
+
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <a href="{{ route('admin.netflix-accounts.edit', $item->id) }}"
+                                        class="rounded-lg bg-[#7B1E1E] px-3 py-2 text-xs font-medium text-white hover:opacity-90">
+                                        Edit
+                                    </a>
+
+                                    <a href="{{ route('admin.netflix-accounts.index') }}"
+                                        class="rounded-lg border border-[#7B1E1E] px-3 py-2 text-xs font-medium text-[#7B1E1E] hover:bg-[#7B1E1E]/10">
+                                        Buka Rekapan
+                                    </a>
+                                </div>
                             </div>
                         @empty
                             <div class="rounded-xl border border-dashed border-gray-300 p-4 text-sm text-gray-500">
@@ -44,6 +56,18 @@
                                         {{ \Carbon\Carbon::parse($item->tanggal_reset)->format('d M Y') }}
                                     </span>
                                 </p>
+
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <a href="{{ route('admin.netflix-accounts.edit', $item->id) }}"
+                                        class="rounded-lg bg-[#7B1E1E] px-3 py-2 text-xs font-medium text-white hover:opacity-90">
+                                        Edit
+                                    </a>
+
+                                    <a href="{{ route('admin.netflix-accounts.index') }}"
+                                        class="rounded-lg border border-[#7B1E1E] px-3 py-2 text-xs font-medium text-[#7B1E1E] hover:bg-[#7B1E1E]/10">
+                                        Buka Rekapan
+                                    </a>
+                                </div>
                             </div>
                         @empty
                             <div class="rounded-xl border border-dashed border-gray-300 p-4 text-sm text-gray-500">
@@ -66,6 +90,18 @@
                                         {{ \Carbon\Carbon::parse($item->tanggal_reset)->format('d M Y') }}
                                     </span>
                                 </p>
+
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <a href="{{ route('admin.netflix-accounts.edit', $item->id) }}"
+                                        class="rounded-lg bg-[#7B1E1E] px-3 py-2 text-xs font-medium text-white hover:opacity-90">
+                                        Edit
+                                    </a>
+
+                                    <a href="{{ route('admin.netflix-accounts.index') }}"
+                                        class="rounded-lg border border-[#7B1E1E] px-3 py-2 text-xs font-medium text-[#7B1E1E] hover:bg-[#7B1E1E]/10">
+                                        Buka Rekapan
+                                    </a>
+                                </div>
                             </div>
                         @empty
                             <div class="rounded-xl border border-dashed border-gray-300 p-4 text-sm text-gray-500">
@@ -93,6 +129,18 @@
                                         {{ \Carbon\Carbon::parse($item->durasi_habis)->format('d M Y') }}
                                     </span>
                                 </p>
+
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <a href="{{ route('admin.netflix-week-accounts.edit', $item->id) }}"
+                                        class="rounded-lg bg-[#7B1E1E] px-3 py-2 text-xs font-medium text-white hover:opacity-90">
+                                        Edit
+                                    </a>
+
+                                    <a href="{{ route('admin.netflix-week-accounts.index') }}"
+                                        class="rounded-lg border border-[#7B1E1E] px-3 py-2 text-xs font-medium text-[#7B1E1E] hover:bg-[#7B1E1E]/10">
+                                        Buka Netflix 1 Week
+                                    </a>
+                                </div>
                             </div>
                         @empty
                             <div class="rounded-xl border border-dashed border-gray-300 p-4 text-sm text-gray-500">
@@ -114,6 +162,18 @@
                                         {{ \Carbon\Carbon::parse($item->durasi_habis)->format('d M Y') }}
                                     </span>
                                 </p>
+
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <a href="{{ route('admin.netflix-week-accounts.edit', $item->id) }}"
+                                        class="rounded-lg bg-[#7B1E1E] px-3 py-2 text-xs font-medium text-white hover:opacity-90">
+                                        Edit
+                                    </a>
+
+                                    <a href="{{ route('admin.netflix-week-accounts.index') }}"
+                                        class="rounded-lg border border-[#7B1E1E] px-3 py-2 text-xs font-medium text-[#7B1E1E] hover:bg-[#7B1E1E]/10">
+                                        Buka Netflix 1 Week
+                                    </a>
+                                </div>
                             </div>
                         @empty
                             <div class="rounded-xl border border-dashed border-gray-300 p-4 text-sm text-gray-500">
@@ -135,6 +195,18 @@
                                         {{ \Carbon\Carbon::parse($item->durasi_habis)->format('d M Y') }}
                                     </span>
                                 </p>
+
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <a href="{{ route('admin.netflix-week-accounts.edit', $item->id) }}"
+                                        class="rounded-lg bg-[#7B1E1E] px-3 py-2 text-xs font-medium text-white hover:opacity-90">
+                                        Edit
+                                    </a>
+
+                                    <a href="{{ route('admin.netflix-week-accounts.index') }}"
+                                        class="rounded-lg border border-[#7B1E1E] px-3 py-2 text-xs font-medium text-[#7B1E1E] hover:bg-[#7B1E1E]/10">
+                                        Buka Netflix 1 Week
+                                    </a>
+                                </div>
                             </div>
                         @empty
                             <div class="rounded-xl border border-dashed border-gray-300 p-4 text-sm text-gray-500">
