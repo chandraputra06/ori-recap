@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\NetflixAccountsExport;
+use App\Exports\NetflixAccountsTemplateExport;
 use App\Http\Requests\StoreNetflixAccountRequest;
 use App\Http\Requests\UpdateNetflixAccountRequest;
+use App\Imports\NetflixAccountsImport;
 use App\Models\NetflixAccounts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class NetflixAccountsController extends Controller
 {
-    private array $sharingOptions = ['1P1U 1 Bulan', '1P2U 1 Bulan', '1P1U 1 Week'];
+    private array $sharingOptions = ['1P1U 1 Bulan', '1P2U 1 Bulan', '1P1U 1 Week', 'DIBELI'];
 
     public function index(Request $request)
     {
@@ -142,5 +146,26 @@ class NetflixAccountsController extends Controller
                 ->route('admin.netflix-accounts.index')
                 ->with('error', 'Gagal menghapus data: ' . $th->getMessage());
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new NetflixAccountsExport(), 'rekapan-netflix.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => ['required', 'mimes:xlsx,xls,csv'],
+        ]);
+
+        Excel::import(new NetflixAccountsImport(), $request->file('file'));
+
+        return redirect()->route('admin.netflix-accounts.index')->with('success', 'Data Rekapan Netflix berhasil diimport.');
+    }
+
+    public function downloadTemplate()
+    {
+        return \Maatwebsite\Excel\Facades\Excel::download(new NetflixAccountsTemplateExport(), 'template-import-rekapan-netflix.xlsx');
     }
 }
