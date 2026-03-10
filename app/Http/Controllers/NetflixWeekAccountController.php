@@ -147,13 +147,23 @@ class NetflixWeekAccountController extends Controller
 
     public function import(Request $request)
     {
-        $request->validate([
-            'file' => ['required', 'mimes:xlsx,xls,csv'],
-        ]);
+        $request->validate(
+            [
+                'file' => ['required', 'mimes:xlsx,xls,csv'],
+            ],
+            [
+                'file.required' => 'File import wajib dipilih terlebih dahulu.',
+                'file.mimes' => 'File harus berupa format Excel atau CSV: xlsx, xls, atau csv.',
+            ],
+        );
 
-        Excel::import(new NetflixWeekAccountsImport(), $request->file('file'));
+        try {
+            \Maatwebsite\Excel\Facades\Excel::import(new \App\Imports\NetflixWeekAccountsImport(), $request->file('file'));
 
-        return redirect()->route('admin.netflix-week-accounts.index')->with('success', 'Data Netflix 1 Week berhasil diimport.');
+            return redirect()->route('admin.netflix-week-accounts.index')->with('success', 'Data Netflix 1 Week berhasil diimport.');
+        } catch (\Throwable $th) {
+            return redirect()->route('admin.netflix-week-accounts.index')->with('error', 'Import gagal. Pastikan format file sesuai template.');
+        }
     }
 
     public function downloadTemplate()
