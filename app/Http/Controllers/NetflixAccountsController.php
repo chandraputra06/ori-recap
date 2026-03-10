@@ -155,13 +155,23 @@ class NetflixAccountsController extends Controller
 
     public function import(Request $request)
     {
-        $request->validate([
-            'file' => ['required', 'mimes:xlsx,xls,csv'],
-        ]);
+        $request->validate(
+            [
+                'file' => ['required', 'mimes:xlsx,xls,csv'],
+            ],
+            [
+                'file.required' => 'File import wajib dipilih terlebih dahulu.',
+                'file.mimes' => 'File harus berupa format Excel atau CSV: xlsx, xls, atau csv.',
+            ],
+        );
 
-        Excel::import(new NetflixAccountsImport(), $request->file('file'));
+        try {
+            \Maatwebsite\Excel\Facades\Excel::import(new \App\Imports\NetflixAccountsImport(), $request->file('file'));
 
-        return redirect()->route('admin.netflix-accounts.index')->with('success', 'Data Rekapan Netflix berhasil diimport.');
+            return redirect()->route('admin.netflix-accounts.index')->with('success', 'Data Rekapan Netflix berhasil diimport.');
+        } catch (\Throwable $th) {
+            return redirect()->route('admin.netflix-accounts.index')->with('error', 'Import gagal. Pastikan format file sesuai template.');
+        }
     }
 
     public function downloadTemplate()

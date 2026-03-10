@@ -21,4 +21,15 @@ class UpdateNetflixWeekAccountRequest extends FormRequest
             'deskripsi' => ['nullable', 'string'],
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'email.required' => 'Email akun wajib diisi.',
+            'email.email' => 'Format email akun tidak valid.',
+            'password.required' => 'Password akun wajib diisi.',
+            'tanggal_terjual.date' => 'Tanggal terjual harus berupa tanggal yang valid.',
+            'durasi_habis.date' => 'Durasi habis harus berupa tanggal yang valid.',
+        ];
+    }
 }

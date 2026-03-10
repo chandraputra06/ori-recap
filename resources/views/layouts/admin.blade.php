@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ asset('logo-orinimo.png') }}">
     @vite('resources/css/app.css')
-    <title>@yield('title', 'OriRecap Admin')</title>
+    <title>@yield('title', 'Orinimo Recap')</title>
 </head>
 
 <body class="bg-gray-100 text-gray-800">

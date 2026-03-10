@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ asset('logo-orinimo.png') }}">
     @vite('resources/css/app.css')
-    <title>Login - OriRecap</title>
+    <title>Login - Orinimo Recap</title>
 </head>
 
 <body class="min-h-screen bg-gray-100">
