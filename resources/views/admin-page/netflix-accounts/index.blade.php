@@ -17,8 +17,14 @@
             </div>
         @endif
 
+        @if ($errors->has('file'))
+            <div class="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                {{ $errors->first('file') }}
+            </div>
+        @endif
+
         <div class="rounded-2xl bg-white p-6 shadow-sm">
-            <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div>
                     <h3 class="text-lg font-bold text-[#7B1E1E]">Data Rekapan Netflix</h3>
                     <p class="mt-1 text-sm text-gray-500">
@@ -26,10 +32,43 @@
                     </p>
                 </div>
 
-                <a href="{{ route('admin.netflix-accounts.create') }}"
-                    class="inline-flex items-center justify-center rounded-xl bg-[#7B1E1E] px-4 py-3 font-medium text-white hover:opacity-90">
-                    Tambah Data
-                </a>
+                <div class="flex flex-col gap-3 sm:flex-row">
+                    <a href="{{ route('admin.netflix-accounts.export') }}"
+                        class="inline-flex items-center justify-center rounded-xl border border-[#7B1E1E] px-4 py-3 font-medium text-[#7B1E1E] hover:bg-[#7B1E1E]/10">
+                        Export Data
+                    </a>
+
+                    <a href="{{ route('admin.netflix-accounts.template') }}"
+                        class="inline-flex items-center justify-center rounded-xl border border-gray-300 px-4 py-3 font-medium text-gray-700 hover:bg-gray-50">
+                        Download Template
+                    </a>
+
+                    <a href="{{ route('admin.netflix-accounts.create') }}"
+                        class="inline-flex items-center justify-center rounded-xl bg-[#7B1E1E] px-4 py-3 font-medium text-white hover:opacity-90">
+                        Tambah Data
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-6 rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-5">
+                <h4 class="text-base font-semibold text-[#7B1E1E]">Import Excel</h4>
+                <p class="mt-1 text-sm text-gray-500">
+                    Upload file Excel dengan format: email, password, tanggal_reset, tipe_sharing, deskripsi
+                </p>
+
+                <form action="{{ route('admin.netflix-accounts.import') }}" method="POST" enctype="multipart/form-data"
+                    class="mt-4 flex flex-col gap-3 lg:flex-row lg:items-center">
+                    @csrf
+
+                    <input type="file" name="file" accept=".xlsx,.xls,.csv"
+                        class="block w-full cursor-pointer rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-700"
+                        required>
+
+                    <button type="submit"
+                        class="cursor-pointer rounded-xl bg-[#7B1E1E] px-5 py-3 font-medium text-white hover:opacity-90">
+                        Import Excel
+                    </button>
+                </form>
             </div>
 
             <form action="{{ route('admin.netflix-accounts.index') }}" method="GET" class="mt-6">
@@ -63,6 +102,7 @@
                     </button>
                 </div>
             </form>
+
             <div class="mt-4">
                 <a href="{{ route('admin.netflix-accounts.index') }}"
                     class="inline-flex rounded-xl border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
@@ -89,7 +129,7 @@
                     <tbody class="divide-y divide-gray-200">
                         @forelse ($netflixAccounts as $item)
                             <tr class="hover:bg-gray-50">
-                                <td class="px-4 py-3">{{ $item->id }}</td>
+                                <td class="px-4 py-3">{{ $netflixAccounts->firstItem() + $loop->index }}</td>
                                 <td class="px-4 py-3">{{ $item->email }}</td>
                                 <td class="px-4 py-3">
                                     <div class="flex items-center gap-2">
@@ -97,7 +137,6 @@
                                             data-full="{{ $item->password }}" class="font-medium text-gray-700">
                                             ••••••••
                                         </span>
-
                                         <button type="button" data-target="password-netflix-{{ $item->id }}"
                                             onclick="togglePassword(this)"
                                             class="cursor-pointer rounded-lg border border-[#7B1E1E] px-3 py-1 text-xs font-medium text-[#7B1E1E] hover:bg-[#7B1E1E]/10">
@@ -106,12 +145,11 @@
                                     </div>
                                 </td>
                                 <td class="px-4 py-3">
-                                    {{ $item->tanggal_reset ? \Carbon\Carbon::parse($item->tanggal_reset)->format('d M Y') : '-' }}
+                                    {{ $item->tanggal_reset ? \Carbon\Carbon::parse($item->tanggal_reset)->format('d/m/Y') : '-' }}
                                 </td>
                                 <td class="px-4 py-3">{{ $item->tipe_sharing }}</td>
                                 <td class="px-4 py-3">
-                                    <span
-                                        class="inline-flex rounded-full px-3 py-1 text-xs font-medium {{ $item->status_reset['class'] }}">
+                                    <span class="inline-flex rounded-full px-3 py-1 text-xs font-medium {{ $item->status_reset['class'] }}">
                                         {{ $item->status_reset['label'] }}
                                     </span>
                                 </td>

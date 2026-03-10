@@ -17,7 +17,7 @@ class StoreNetflixAccountRequest extends FormRequest
             'email' => ['required', 'email', 'max:255'],
             'password' => ['required', 'string', 'max:255'],
             'tanggal_reset' => ['nullable', 'date'],
-            'tipe_sharing' => ['required', 'in:1P1U 1 Bulan,1P2U 1 Bulan,1P1U 1 Week'],
+            'tipe_sharing' => ['required', 'in:1P1U 1 Bulan,1P2U 1 Bulan,1P1U 1 Week, DIBELI'],
             'deskripsi' => ['nullable', 'string'],
         ];
     }

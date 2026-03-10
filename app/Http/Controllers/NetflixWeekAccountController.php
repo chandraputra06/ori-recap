@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\NetflixWeekAccountsExport;
+use App\Exports\NetflixWeekAccountsTemplateExport;
 use App\Http\Requests\StoreNetflixWeekAccountRequest;
 use App\Http\Requests\UpdateNetflixWeekAccountRequest;
+use App\Imports\NetflixWeekAccountsImport;
 use App\Models\NetflixWeekAccount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class NetflixWeekAccountController extends Controller
 {
@@ -19,7 +23,8 @@ class NetflixWeekAccountController extends Controller
         $netflixWeekAccounts = NetflixWeekAccount::query()
             ->when($q, function ($query) use ($q) {
                 $query->where(function ($subQuery) use ($q) {
-                    $subQuery->where('id', 'like', "%{$q}%")
+                    $subQuery
+                        ->where('id', 'like', "%{$q}%")
                         ->orWhere('email', 'like', "%{$q}%")
                         ->orWhere('password', 'like', "%{$q}%")
                         ->orWhere('deskripsi', 'like', "%{$q}%");
@@ -32,10 +37,7 @@ class NetflixWeekAccountController extends Controller
                 $query->whereDate('durasi_habis', '>', now()->addDays(2)->toDateString());
             })
             ->when($status === 'segera_habis', function ($query) {
-                $query->whereBetween('durasi_habis', [
-                    now()->addDay()->toDateString(),
-                    now()->addDays(2)->toDateString(),
-                ]);
+                $query->whereBetween('durasi_habis', [now()->addDay()->toDateString(), now()->addDays(2)->toDateString()]);
             })
             ->when($status === 'habis_hari_ini', function ($query) {
                 $query->whereDate('durasi_habis', now()->toDateString());
@@ -83,9 +85,7 @@ class NetflixWeekAccountController extends Controller
 
             DB::commit();
 
-            return redirect()
-                ->route('admin.netflix-week-accounts.index')
-                ->with('success', 'Data Netflix 1 Week berhasil ditambahkan.');
+            return redirect()->route('admin.netflix-week-accounts.index')->with('success', 'Data Netflix 1 Week berhasil ditambahkan.');
         } catch (\Throwable $th) {
             DB::rollBack();
 
@@ -110,9 +110,7 @@ class NetflixWeekAccountController extends Controller
 
             DB::commit();
 
-            return redirect()
-                ->route('admin.netflix-week-accounts.index')
-                ->with('success', 'Data Netflix 1 Week berhasil diperbarui.');
+            return redirect()->route('admin.netflix-week-accounts.index')->with('success', 'Data Netflix 1 Week berhasil diperbarui.');
         } catch (\Throwable $th) {
             DB::rollBack();
 
@@ -132,9 +130,7 @@ class NetflixWeekAccountController extends Controller
 
             DB::commit();
 
-            return redirect()
-                ->route('admin.netflix-week-accounts.index')
-                ->with('success', 'Data Netflix 1 Week berhasil dihapus.');
+            return redirect()->route('admin.netflix-week-accounts.index')->with('success', 'Data Netflix 1 Week berhasil dihapus.');
         } catch (\Throwable $th) {
             DB::rollBack();
 
@@ -142,5 +138,26 @@ class NetflixWeekAccountController extends Controller
                 ->route('admin.netflix-week-accounts.index')
                 ->with('error', 'Gagal menghapus data: ' . $th->getMessage());
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new NetflixWeekAccountsExport(), 'netflix-1-week.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => ['required', 'mimes:xlsx,xls,csv'],
+        ]);
+
+        Excel::import(new NetflixWeekAccountsImport(), $request->file('file'));
+
+        return redirect()->route('admin.netflix-week-accounts.index')->with('success', 'Data Netflix 1 Week berhasil diimport.');
+    }
+
+    public function downloadTemplate()
+    {
+        return \Maatwebsite\Excel\Facades\Excel::download(new NetflixWeekAccountsTemplateExport(), 'template-import-netflix-1-week.xlsx');
     }
 }

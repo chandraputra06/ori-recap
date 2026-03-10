@@ -83,7 +83,7 @@
                             <p class="mt-3 text-sm text-gray-600">
                                 Tanggal Reset:
                                 <span class="font-medium">
-                                    {{ \Carbon\Carbon::parse($item->tanggal_reset)->format('d M Y') }}
+                                    {{ \Carbon\Carbon::parse($item->tanggal_reset)->format('d/m/Y') }}
                                 </span>
                             </p>
 
@@ -119,7 +119,7 @@
                                     <p class="font-semibold text-gray-800">{{ $item->email }}</p>
                                     <p class="mt-1 text-sm text-gray-500">
                                         Tanggal Terjual:
-                                        {{ $item->tanggal_terjual ? \Carbon\Carbon::parse($item->tanggal_terjual)->format('d M Y') : '-' }}
+                                        {{ $item->tanggal_terjual ? \Carbon\Carbon::parse($item->tanggal_terjual)->format('d/m/Y') : '-' }}
                                     </p>
                                 </div>
                                 <span class="inline-flex rounded-full px-3 py-1 text-xs font-medium {{ $item->status_habis['class'] }}">
@@ -130,7 +130,7 @@
                             <p class="mt-3 text-sm text-gray-600">
                                 Durasi Habis:
                                 <span class="font-medium">
-                                    {{ \Carbon\Carbon::parse($item->durasi_habis)->format('d M Y') }}
+                                    {{ \Carbon\Carbon::parse($item->durasi_habis)->format('d/m/Y') }}
                                 </span>
                             </p>
 
