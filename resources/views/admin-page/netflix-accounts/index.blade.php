@@ -111,7 +111,97 @@
             </div>
         </div>
 
-        <div class="overflow-hidden rounded-2xl bg-white shadow-sm">
+        <!-- Mobile Card View -->
+        <div class="space-y-4 lg:hidden">
+            @forelse ($netflixAccounts as $item)
+                <div class="rounded-2xl bg-white p-5 shadow-sm">
+                    <div class="flex items-start justify-between gap-3">
+                        <div>
+                            <p class="text-sm text-gray-500">Nomor</p>
+                            <p class="font-semibold text-gray-800">{{ $netflixAccounts->firstItem() + $loop->index }}</p>
+                        </div>
+
+                        <span class="inline-flex rounded-full px-3 py-1 text-xs font-medium {{ $item->status_reset['class'] }}">
+                            {{ $item->status_reset['label'] }}
+                        </span>
+                    </div>
+
+                    <div class="mt-4 space-y-3">
+                        <div>
+                            <p class="text-sm text-gray-500">Email</p>
+                            <p class="font-medium text-gray-800">{{ $item->email }}</p>
+                        </div>
+
+                        <div>
+                            <p class="text-sm text-gray-500">Password</p>
+                            <div class="mt-1 flex items-center gap-2">
+                                <span id="password-mobile-netflix-{{ $item->id }}" data-hidden="••••••••"
+                                    data-full="{{ $item->password }}" class="font-medium text-gray-800">
+                                    ••••••••
+                                </span>
+
+                                <button type="button" data-target="password-mobile-netflix-{{ $item->id }}"
+                                    onclick="togglePassword(this)"
+                                    class="cursor-pointer rounded-lg border border-[#7B1E1E] px-3 py-1 text-xs font-medium text-[#7B1E1E] hover:bg-[#7B1E1E]/10">
+                                    Lihat
+                                </button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="text-sm text-gray-500">Tanggal Reset</p>
+                            <p class="font-medium text-gray-800">
+                                {{ $item->tanggal_reset ? \Carbon\Carbon::parse($item->tanggal_reset)->format('d/m/Y') : '-' }}
+                            </p>
+                        </div>
+
+                        <div>
+                            <p class="text-sm text-gray-500">Tipe Sharing</p>
+                            <p class="font-medium text-gray-800">{{ $item->tipe_sharing ?? '-' }}</p>
+                        </div>
+
+                        <div>
+                            <p class="text-sm text-gray-500">Deskripsi</p>
+                            <p class="font-medium text-gray-800">{{ $item->deskripsi ?: '-' }}</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 flex flex-wrap gap-2">
+                        <a href="{{ route('admin.netflix-accounts.show', $item->id) }}"
+                            class="rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium text-gray-700 hover:bg-gray-50">
+                            Detail
+                        </a>
+
+                        <a href="{{ route('admin.netflix-accounts.edit', $item->id) }}"
+                            class="rounded-lg border border-[#7B1E1E] px-3 py-2 text-xs font-medium text-[#7B1E1E] hover:bg-[#7B1E1E]/10">
+                            Edit
+                        </a>
+
+                        <form action="{{ route('admin.netflix-accounts.destroy', $item->id) }}" method="POST"
+                            onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit"
+                                class="cursor-pointer rounded-lg bg-red-500 px-3 py-2 text-xs font-medium text-white hover:bg-red-600">
+                                Hapus
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            @empty
+                <div class="rounded-2xl bg-white p-6 text-center text-gray-500 shadow-sm">
+                    Belum ada data rekapan Netflix.
+                </div>
+            @endforelse
+
+            <div class="rounded-2xl bg-white px-4 py-4 shadow-sm">
+                {{ $netflixAccounts->links() }}
+            </div>
+        </div>
+
+        <!-- Desktop Table View -->
+        <div class="hidden overflow-hidden rounded-2xl bg-white shadow-sm lg:block">
             <div class="overflow-x-auto">
                 <table class="min-w-full text-sm">
                     <thead class="bg-[#7B1E1E] text-white">
@@ -156,6 +246,11 @@
                                 <td class="px-4 py-3">{{ $item->deskripsi ?: '-' }}</td>
                                 <td class="px-4 py-3">
                                     <div class="flex items-center justify-center gap-2">
+                                        <a href="{{ route('admin.netflix-accounts.show', $item->id) }}"
+                                            class="rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium text-gray-700 hover:bg-gray-50">
+                                            Detail
+                                        </a>
+
                                         <a href="{{ route('admin.netflix-accounts.edit', $item->id) }}"
                                             class="rounded-lg border border-[#7B1E1E] px-3 py-2 text-xs font-medium text-[#7B1E1E] hover:bg-[#7B1E1E]/10">
                                             Edit

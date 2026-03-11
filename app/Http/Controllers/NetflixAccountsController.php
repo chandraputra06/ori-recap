@@ -166,9 +166,12 @@ class NetflixAccountsController extends Controller
         );
 
         try {
-            \Maatwebsite\Excel\Facades\Excel::import(new \App\Imports\NetflixAccountsImport(), $request->file('file'));
+            $import = new \App\Imports\NetflixAccountsImport();
+            \Maatwebsite\Excel\Facades\Excel::import($import, $request->file('file'));
 
-            return redirect()->route('admin.netflix-accounts.index')->with('success', 'Data Rekapan Netflix berhasil diimport.');
+            return redirect()
+                ->route('admin.netflix-accounts.index')
+                ->with('success', "Import selesai. {$import->imported} data berhasil diimport, {$import->skipped} data dilewati.");
         } catch (\Throwable $th) {
             return redirect()->route('admin.netflix-accounts.index')->with('error', 'Import gagal. Pastikan format file sesuai template.');
         }
@@ -177,5 +180,10 @@ class NetflixAccountsController extends Controller
     public function downloadTemplate()
     {
         return \Maatwebsite\Excel\Facades\Excel::download(new NetflixAccountsTemplateExport(), 'template-import-rekapan-netflix.xlsx');
+    }
+
+    public function show(NetflixAccounts $netflixAccount)
+    {
+        return view('admin-page.netflix-accounts.show', compact('netflixAccount'));
     }
 }

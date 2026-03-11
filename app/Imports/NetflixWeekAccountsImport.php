@@ -11,22 +11,29 @@ use PhpOffice\PhpSpreadsheet\Shared\Date;
 
 class NetflixWeekAccountsImport implements ToCollection, WithHeadingRow
 {
+    public int $imported = 0;
+    public int $skipped = 0;
+
     public function collection(Collection $rows)
     {
         foreach ($rows as $row) {
             $email = $this->cleanValue($row['email'] ?? null);
+            $password = $this->cleanValue($row['password'] ?? null);
 
             if (!$email) {
+                $this->skipped++;
                 continue;
             }
 
             NetflixWeekAccount::create([
                 'email' => $email,
-                'password' => $this->cleanValue($row['password'] ?? null),
+                'password' => $password ?? '-',
                 'tanggal_terjual' => $this->transformDate($row['tanggal_terjual'] ?? null),
                 'durasi_habis' => $this->transformDate($row['durasi_habis'] ?? null),
                 'deskripsi' => $this->cleanValue($row['deskripsi'] ?? null),
             ]);
+
+            $this->imported++;
         }
     }
 
