@@ -111,7 +111,99 @@
             </div>
         </div>
 
-        <div class="overflow-hidden rounded-2xl bg-white shadow-sm">
+        <!-- Mobile Card View -->
+        <div class="space-y-4 lg:hidden">
+            @forelse ($netflixWeekAccounts as $item)
+                <div class="rounded-2xl bg-white p-5 shadow-sm">
+                    <div class="flex items-start justify-between gap-3">
+                        <div>
+                            <p class="text-sm text-gray-500">Nomor</p>
+                            <p class="font-semibold text-gray-800">{{ $netflixWeekAccounts->firstItem() + $loop->index }}</p>
+                        </div>
+
+                        <span class="inline-flex rounded-full px-3 py-1 text-xs font-medium {{ $item->status_habis['class'] }}">
+                            {{ $item->status_habis['label'] }}
+                        </span>
+                    </div>
+
+                    <div class="mt-4 space-y-3">
+                        <div>
+                            <p class="text-sm text-gray-500">Email</p>
+                            <p class="font-medium text-gray-800">{{ $item->email }}</p>
+                        </div>
+
+                        <div>
+                            <p class="text-sm text-gray-500">Password</p>
+                            <div class="mt-1 flex items-center gap-2">
+                                <span id="password-mobile-week-{{ $item->id }}" data-hidden="••••••••"
+                                    data-full="{{ $item->password }}" class="font-medium text-gray-800">
+                                    ••••••••
+                                </span>
+
+                                <button type="button" data-target="password-mobile-week-{{ $item->id }}"
+                                    onclick="togglePassword(this)"
+                                    class="cursor-pointer rounded-lg border border-[#7B1E1E] px-3 py-1 text-xs font-medium text-[#7B1E1E] hover:bg-[#7B1E1E]/10">
+                                    Lihat
+                                </button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="text-sm text-gray-500">Tanggal Terjual</p>
+                            <p class="font-medium text-gray-800">
+                                {{ $item->tanggal_terjual ? \Carbon\Carbon::parse($item->tanggal_terjual)->format('d/m/Y') : '-' }}
+                            </p>
+                        </div>
+
+                        <div>
+                            <p class="text-sm text-gray-500">Durasi Habis</p>
+                            <p class="font-medium text-gray-800">
+                                {{ $item->durasi_habis ? \Carbon\Carbon::parse($item->durasi_habis)->format('d/m/Y') : '-' }}
+                            </p>
+                        </div>
+
+                        <div>
+                            <p class="text-sm text-gray-500">Deskripsi</p>
+                            <p class="font-medium text-gray-800">{{ $item->deskripsi ?: '-' }}</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 flex flex-wrap gap-2">
+                        <a href="{{ route('admin.netflix-week-accounts.show', $item->id) }}"
+                            class="rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium text-gray-700 hover:bg-gray-50">
+                            Detail
+                        </a>
+
+                        <a href="{{ route('admin.netflix-week-accounts.edit', $item->id) }}"
+                            class="rounded-lg border border-[#7B1E1E] px-3 py-2 text-xs font-medium text-[#7B1E1E] hover:bg-[#7B1E1E]/10">
+                            Edit
+                        </a>
+
+                        <form action="{{ route('admin.netflix-week-accounts.destroy', $item->id) }}" method="POST"
+                            onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit"
+                                class="cursor-pointer rounded-lg bg-red-500 px-3 py-2 text-xs font-medium text-white hover:bg-red-600">
+                                Hapus
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            @empty
+                <div class="rounded-2xl bg-white p-6 text-center text-gray-500 shadow-sm">
+                    Belum ada data Netflix 1 Week.
+                </div>
+            @endforelse
+
+            <div class="rounded-2xl bg-white px-4 py-4 shadow-sm">
+                {{ $netflixWeekAccounts->links() }}
+            </div>
+        </div>
+
+        <!-- Desktop Table View -->
+        <div class="hidden overflow-hidden rounded-2xl bg-white shadow-sm lg:block">
             <div class="overflow-x-auto">
                 <table class="min-w-full text-sm">
                     <thead class="bg-[#7B1E1E] text-white">
@@ -152,14 +244,18 @@
                                     {{ $item->durasi_habis ? \Carbon\Carbon::parse($item->durasi_habis)->format('d/m/Y') : '-' }}
                                 </td>
                                 <td class="px-4 py-3">
-                                    <span
-                                        class="inline-flex rounded-full px-3 py-1 text-xs font-medium {{ $item->status_habis['class'] }}">
+                                    <span class="inline-flex rounded-full px-3 py-1 text-xs font-medium {{ $item->status_habis['class'] }}">
                                         {{ $item->status_habis['label'] }}
                                     </span>
                                 </td>
                                 <td class="px-4 py-3">{{ $item->deskripsi ?: '-' }}</td>
                                 <td class="px-4 py-3">
                                     <div class="flex items-center justify-center gap-2">
+                                        <a href="{{ route('admin.netflix-week-accounts.show', $item->id) }}"
+                                            class="rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium text-gray-700 hover:bg-gray-50">
+                                            Detail
+                                        </a>
+
                                         <a href="{{ route('admin.netflix-week-accounts.edit', $item->id) }}"
                                             class="rounded-lg border border-[#7B1E1E] px-3 py-2 text-xs font-medium text-[#7B1E1E] hover:bg-[#7B1E1E]/10">
                                             Edit

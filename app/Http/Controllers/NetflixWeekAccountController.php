@@ -7,6 +7,7 @@ use App\Exports\NetflixWeekAccountsTemplateExport;
 use App\Http\Requests\StoreNetflixWeekAccountRequest;
 use App\Http\Requests\UpdateNetflixWeekAccountRequest;
 use App\Imports\NetflixWeekAccountsImport;
+use App\Models\NetflixAccounts;
 use App\Models\NetflixWeekAccount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -158,9 +159,12 @@ class NetflixWeekAccountController extends Controller
         );
 
         try {
-            \Maatwebsite\Excel\Facades\Excel::import(new \App\Imports\NetflixWeekAccountsImport(), $request->file('file'));
+            $import = new \App\Imports\NetflixWeekAccountsImport();
+            \Maatwebsite\Excel\Facades\Excel::import($import, $request->file('file'));
 
-            return redirect()->route('admin.netflix-week-accounts.index')->with('success', 'Data Netflix 1 Week berhasil diimport.');
+            return redirect()
+                ->route('admin.netflix-week-accounts.index')
+                ->with('success', "Import selesai. {$import->imported} data berhasil diimport, {$import->skipped} data dilewati.");
         } catch (\Throwable $th) {
             return redirect()->route('admin.netflix-week-accounts.index')->with('error', 'Import gagal. Pastikan format file sesuai template.');
         }
@@ -169,5 +173,10 @@ class NetflixWeekAccountController extends Controller
     public function downloadTemplate()
     {
         return \Maatwebsite\Excel\Facades\Excel::download(new NetflixWeekAccountsTemplateExport(), 'template-import-netflix-1-week.xlsx');
+    }
+
+    public function show(NetflixWeekAccount $netflixWeekAccount)
+    {
+        return view('admin-page.netflix-week-accounts.show', compact('netflixWeekAccount'));
     }
 }
