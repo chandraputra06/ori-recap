@@ -17,9 +17,9 @@
 
                 {{-- Reset Hari Ini --}}
                 <div class="rounded-2xl bg-white border border-slate-100 shadow-sm overflow-hidden">
-                    <div class="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-[#7B1E1E]/5">
-                        <span class="h-2 w-2 rounded-full bg-[#7B1E1E] shrink-0"></span>
-                        <h4 class="text-sm font-semibold text-[#7B1E1E]">Reset Hari Ini</h4>
+                    <div class="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-orange-50">
+                        <span class="h-2 w-2 rounded-full bg-orange-400 shrink-0"></span>
+                        <h4 class="text-sm font-semibold text-orange-600">Reset Hari Ini</h4>
                     </div>
                     <div class="divide-y divide-slate-50">
                         @forelse ($resetHariIni as $item)
@@ -50,9 +50,9 @@
 
                 {{-- Segera Reset --}}
                 <div class="rounded-2xl bg-white border border-slate-100 shadow-sm overflow-hidden">
-                    <div class="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-[#7B1E1E]/5">
-                        <span class="h-2 w-2 rounded-full bg-[#7B1E1E] shrink-0"></span>
-                        <h4 class="text-sm font-semibold text-[#7B1E1E]">Segera Reset</h4>
+                    <div class="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-yellow-50">
+                        <span class="h-2 w-2 rounded-full bg-yellow-400 shrink-0"></span>
+                        <h4 class="text-sm font-semibold text-yellow-600">Segera Reset</h4>
                     </div>
                     <div class="divide-y divide-slate-50">
                         @forelse ($segeraReset as $item)
@@ -83,9 +83,9 @@
 
                 {{-- Lewat Reset --}}
                 <div class="rounded-2xl bg-white border border-slate-100 shadow-sm overflow-hidden">
-                    <div class="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-[#7B1E1E]/5">
-                        <span class="h-2 w-2 rounded-full bg-[#7B1E1E] shrink-0"></span>
-                        <h4 class="text-sm font-semibold text-[#7B1E1E]">Lewat Reset</h4>
+                    <div class="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-red-50">
+                        <span class="h-2 w-2 rounded-full bg-red-400 shrink-0"></span>
+                        <h4 class="text-sm font-semibold text-red-600">Lewat Reset</h4>
                     </div>
                     <div class="divide-y divide-slate-50">
                         @forelse ($lewatReset as $item)
@@ -131,9 +131,9 @@
 
                 {{-- Habis Hari Ini --}}
                 <div class="rounded-2xl bg-white border border-slate-100 shadow-sm overflow-hidden">
-                    <div class="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-[#7B1E1E]/5">
-                        <span class="h-2 w-2 rounded-full bg-[#7B1E1E] shrink-0"></span>
-                        <h4 class="text-sm font-semibold text-[#7B1E1E]">Habis Hari Ini</h4>
+                    <div class="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-orange-50">
+                        <span class="h-2 w-2 rounded-full bg-orange-400 shrink-0"></span>
+                        <h4 class="text-sm font-semibold text-orange-600">Habis Hari Ini</h4>
                     </div>
                     <div class="divide-y divide-slate-50">
                         @forelse ($habisHariIni as $item)
@@ -163,9 +163,9 @@
 
                 {{-- Segera Habis --}}
                 <div class="rounded-2xl bg-white border border-slate-100 shadow-sm overflow-hidden">
-                    <div class="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-[#7B1E1E]/5">
-                        <span class="h-2 w-2 rounded-full bg-[#7B1E1E] shrink-0"></span>
-                        <h4 class="text-sm font-semibold text-[#7B1E1E]">Segera Habis</h4>
+                    <div class="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-yellow-50">
+                        <span class="h-2 w-2 rounded-full bg-yellow-400 shrink-0"></span>
+                        <h4 class="text-sm font-semibold text-yellow-600">Segera Habis</h4>
                     </div>
                     <div class="divide-y divide-slate-50">
                         @forelse ($segeraHabis as $item)
@@ -195,9 +195,9 @@
 
                 {{-- Sudah Habis --}}
                 <div class="rounded-2xl bg-white border border-slate-100 shadow-sm overflow-hidden">
-                    <div class="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-[#7B1E1E]/5">
-                        <span class="h-2 w-2 rounded-full bg-[#7B1E1E] shrink-0"></span>
-                        <h4 class="text-sm font-semibold text-[#7B1E1E]">Sudah Habis</h4>
+                    <div class="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-red-50">
+                        <span class="h-2 w-2 rounded-full bg-red-400 shrink-0"></span>
+                        <h4 class="text-sm font-semibold text-red-600">Sudah Habis</h4>
                     </div>
                     <div class="divide-y divide-slate-50">
                         @forelse ($sudahHabis as $item)

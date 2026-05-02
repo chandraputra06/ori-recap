@@ -8,37 +8,22 @@
 
         {{-- Alerts --}}
         @if (session('success'))
-            <div
-                class="flex items-center gap-3 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
+            <div class="flex items-center gap-3 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                 {{ session('success') }}
             </div>
         @endif
 
         @if (session('error'))
             <div class="flex items-center gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="15" x2="9" y1="9" y2="15" />
-                    <line x1="9" x2="15" y1="9" y2="15" />
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><circle cx="12" cy="12" r="10"/><line x1="15" x2="9" y1="9" y2="15"/><line x1="9" x2="15" y1="9" y2="15"/></svg>
                 {{ session('error') }}
             </div>
         @endif
 
         @if ($errors->has('file'))
             <div class="flex items-center gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="15" x2="9" y1="9" y2="15" />
-                    <line x1="9" x2="15" y1="9" y2="15" />
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><circle cx="12" cy="12" r="10"/><line x1="15" x2="9" y1="9" y2="15"/><line x1="9" x2="15" y1="9" y2="15"/></svg>
                 {{ $errors->first('file') }}
             </div>
         @endif
@@ -54,35 +39,19 @@
                 <div class="flex flex-wrap gap-2">
                     <a href="{{ route('admin.netflix-week-accounts.export') }}"
                         class="inline-flex items-center gap-1.5 rounded-xl border border-[#7B1E1E] px-3.5 py-2 text-sm font-medium text-[#7B1E1E] hover:bg-[#7B1E1E]/5 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                            <polyline points="7 10 12 15 17 10" />
-                            <line x1="12" x2="12" y1="15" y2="3" />
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
                         Export
                     </a>
 
                     <a href="{{ route('admin.netflix-week-accounts.template') }}"
                         class="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 px-3.5 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-                            <polyline points="14 2 14 8 20 8" />
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
                         Template
                     </a>
 
                     <a href="{{ route('admin.netflix-week-accounts.create') }}"
                         class="inline-flex items-center gap-1.5 rounded-xl bg-[#7B1E1E] px-3.5 py-2 text-sm font-medium text-white hover:opacity-90 transition-opacity">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M5 12h14" />
-                            <path d="M12 5v14" />
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                         Tambah Data
                     </a>
                 </div>
@@ -91,8 +60,7 @@
             {{-- Import Excel --}}
             <div class="mt-5 rounded-xl border border-dashed border-slate-200 bg-slate-50 p-4">
                 <p class="text-sm font-medium text-slate-700">Import Excel</p>
-                <p class="mt-0.5 text-xs text-slate-400">Format: email, password, tanggal_terjual, durasi_habis, deskripsi
-                </p>
+                <p class="mt-0.5 text-xs text-slate-400">Format: email, password, tanggal_terjual, durasi_habis, deskripsi</p>
 
                 <form action="{{ route('admin.netflix-week-accounts.import') }}" method="POST"
                     enctype="multipart/form-data" class="mt-3 flex flex-col gap-2 sm:flex-row sm:items-center">
@@ -154,11 +122,9 @@
                     <div class="flex items-start justify-between gap-3">
                         <div class="min-w-0">
                             <p class="font-semibold text-slate-800 truncate">{{ $item->email }}</p>
-                            <p class="text-xs text-slate-400 mt-0.5">
-                                #{{ $netflixWeekAccounts->firstItem() + $loop->index }}</p>
+                            <p class="text-xs text-slate-400 mt-0.5">#{{ $netflixWeekAccounts->firstItem() + $loop->index }}</p>
                         </div>
-                        <span
-                            class="shrink-0 inline-flex rounded-full px-2.5 py-1 text-xs font-medium {{ $item->status_habis['class'] }}">
+                        <span class="shrink-0 inline-flex rounded-full px-2.5 py-1 text-xs font-medium {{ $item->status_habis['class'] }}">
                             {{ $item->status_habis['label'] }}
                         </span>
                     </div>
@@ -236,21 +202,20 @@
                 <table class="min-w-full text-sm">
                     <thead>
                         <tr class="bg-slate-50 border-b border-slate-100">
-                            <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500">No</th>
-                            <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500">Email</th>
-                            <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500">Password</th>
-                            <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500">Tgl Terjual</th>
-                            <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500">Durasi Habis</th>
-                            <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500">Status</th>
-                            <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500">Deskripsi</th>
-                            <th class="px-4 py-3 text-center text-xs font-semibold text-slate-500">Aksi</th>
+                            <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">No</th>
+                            <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Email</th>
+                            <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Password</th>
+                            <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Tgl Terjual</th>
+                            <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Durasi Habis</th>
+                            <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
+                            <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Deskripsi</th>
+                            <th class="px-4 py-3 text-center text-xs font-semibold text-slate-500 uppercase tracking-wider">Aksi</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-50">
                         @forelse ($netflixWeekAccounts as $item)
                             <tr class="hover:bg-slate-50/70 transition-colors">
-                                <td class="px-4 py-3 text-slate-400 text-xs">
-                                    {{ $netflixWeekAccounts->firstItem() + $loop->index }}</td>
+                                <td class="px-4 py-3 text-slate-400 text-xs">{{ $netflixWeekAccounts->firstItem() + $loop->index }}</td>
                                 <td class="px-4 py-3 font-medium text-slate-800">{{ $item->email }}</td>
                                 <td class="px-4 py-3">
                                     <div class="flex items-center gap-2">
@@ -272,13 +237,11 @@
                                     {{ $item->durasi_habis ? \Carbon\Carbon::parse($item->durasi_habis)->format('d/m/Y') : '-' }}
                                 </td>
                                 <td class="px-4 py-3">
-                                    <span
-                                        class="inline-flex rounded-full px-2.5 py-1 text-xs font-medium {{ $item->status_habis['class'] }}">
+                                    <span class="inline-flex rounded-full px-2.5 py-1 text-xs font-medium {{ $item->status_habis['class'] }}">
                                         {{ $item->status_habis['label'] }}
                                     </span>
                                 </td>
-                                <td class="px-4 py-3 text-slate-500 max-w-[180px] truncate">{{ $item->deskripsi ?: '-' }}
-                                </td>
+                                <td class="px-4 py-3 text-slate-500 max-w-[180px] truncate">{{ $item->deskripsi ?: '-' }}</td>
                                 <td class="px-4 py-3">
                                     <div class="flex items-center justify-center gap-1.5">
                                         <a href="{{ route('admin.netflix-week-accounts.show', $item->id) }}"

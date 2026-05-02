@@ -44,7 +44,7 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 text-gray-800">
+<body class="bg-slate-50 text-gray-800" style="font-family: ui-sans-serif, system-ui, sans-serif;">
     <div class="min-h-screen flex">
         <!-- Overlay Mobile -->
         <div id="sidebar-overlay"
@@ -59,7 +59,7 @@
             <div class="px-5 py-6 border-b border-slate-100">
                 <div class="flex items-center justify-between">
                     <div>
-                        <h1 class="text-xl font-bold text-[#7B1E1E] tracking-tight">Orinimo Recapitulation</h1>
+                        <h1 class="text-xl font-bold text-[#7B1E1E] tracking-tight">OriRecap</h1>
                         <p class="text-xs text-slate-400 mt-0.5 font-medium uppercase tracking-widest">Admin Panel</p>
                     </div>
                     <button id="close-sidebar" type="button"
