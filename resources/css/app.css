@@ -8,3 +8,11 @@
 @theme {
     --font-sans: 'Poppins', sans-serif;
 }
+
+@layer base {
+    *,
+    ::before,
+    ::after {
+        border-color: #e2e8f0;
+    }
+}
