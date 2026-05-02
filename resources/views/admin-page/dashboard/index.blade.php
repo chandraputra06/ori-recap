@@ -5,149 +5,165 @@
 
 @section('content')
     <div class="space-y-6">
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+
+        {{-- Stats Row 1 --}}
+        <div class="grid grid-cols-2 gap-3 xl:grid-cols-4">
             <a href="{{ route('admin.netflix-accounts.index') }}"
-               class="block rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-                <p class="text-sm text-gray-500">Total Rekapan Netflix</p>
-                <h3 class="mt-2 text-3xl font-bold text-[#7B1E1E]">{{ $totalNetflixAccounts }}</h3>
+               class="group block rounded-2xl bg-white border border-slate-100 p-5 shadow-sm hover:shadow-md hover:border-[#7B1E1E]/20 transition-all duration-200">
+                <p class="text-sm font-medium text-slate-500">Total Rekapan Netflix</p>
+                <h3 class="mt-3 text-3xl font-bold text-[#7B1E1E]">{{ $totalNetflixAccounts }}</h3>
+                <p class="mt-1 text-xs text-slate-400 group-hover:text-[#7B1E1E] transition-colors">Lihat semua →</p>
             </a>
 
             <a href="{{ route('admin.netflix-week-accounts.index') }}"
-               class="block rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-                <p class="text-sm text-gray-500">Total Netflix 1 Week</p>
-                <h3 class="mt-2 text-3xl font-bold text-[#7B1E1E]">{{ $totalNetflixWeekAccounts }}</h3>
+               class="group block rounded-2xl bg-white border border-slate-100 p-5 shadow-sm hover:shadow-md hover:border-[#7B1E1E]/20 transition-all duration-200">
+                <p class="text-sm font-medium text-slate-500">Total Netflix 1 Week</p>
+                <h3 class="mt-3 text-3xl font-bold text-[#7B1E1E]">{{ $totalNetflixWeekAccounts }}</h3>
+                <p class="mt-1 text-xs text-slate-400 group-hover:text-[#7B1E1E] transition-colors">Lihat semua →</p>
             </a>
 
             <a href="{{ route('admin.reminders.index') }}"
-               class="block rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-                <p class="text-sm text-gray-500">Reset Hari Ini</p>
-                <h3 class="mt-2 text-3xl font-bold text-orange-600">{{ $resetHariIni }}</h3>
+               class="group block rounded-2xl bg-white border border-slate-100 p-5 shadow-sm hover:shadow-md hover:border-[#7B1E1E]/20 transition-all duration-200">
+                <p class="text-sm font-medium text-slate-500">Reset Hari Ini</p>
+                <h3 class="mt-3 text-3xl font-bold text-[#7B1E1E]">{{ $resetHariIni }}</h3>
+                <p class="mt-1 text-xs text-slate-400 group-hover:text-[#7B1E1E] transition-colors">Lihat detail →</p>
             </a>
 
             <a href="{{ route('admin.reminders.index') }}"
-               class="block rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-                <p class="text-sm text-gray-500">Habis Hari Ini</p>
-                <h3 class="mt-2 text-3xl font-bold text-red-600">{{ $habisHariIni }}</h3>
+               class="group block rounded-2xl bg-white border border-slate-100 p-5 shadow-sm hover:shadow-md hover:border-[#7B1E1E]/20 transition-all duration-200">
+                <p class="text-sm font-medium text-slate-500">Habis Hari Ini</p>
+                <h3 class="mt-3 text-3xl font-bold text-[#7B1E1E]">{{ $habisHariIni }}</h3>
+                <p class="mt-1 text-xs text-slate-400 group-hover:text-[#7B1E1E] transition-colors">Lihat detail →</p>
             </a>
         </div>
 
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {{-- Stats Row 2 --}}
+        <div class="grid grid-cols-2 gap-3 xl:grid-cols-4">
             <a href="{{ route('admin.reminders.index') }}"
-               class="block rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-                <p class="text-sm text-gray-500">Segera Reset</p>
-                <h3 class="mt-2 text-3xl font-bold text-yellow-600">{{ $segeraReset }}</h3>
+               class="group block rounded-2xl bg-white border border-slate-100 p-5 shadow-sm hover:shadow-md hover:border-[#7B1E1E]/20 transition-all duration-200">
+                <p class="text-sm font-medium text-slate-500">Segera Reset</p>
+                <h3 class="mt-3 text-3xl font-bold text-[#7B1E1E]">{{ $segeraReset }}</h3>
+                <p class="mt-1 text-xs text-slate-400 group-hover:text-[#7B1E1E] transition-colors">Lihat detail →</p>
             </a>
 
             <a href="{{ route('admin.reminders.index') }}"
-               class="block rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-                <p class="text-sm text-gray-500">Lewat Reset</p>
-                <h3 class="mt-2 text-3xl font-bold text-red-600">{{ $lewatReset }}</h3>
+               class="group block rounded-2xl bg-white border border-slate-100 p-5 shadow-sm hover:shadow-md hover:border-[#7B1E1E]/20 transition-all duration-200">
+                <p class="text-sm font-medium text-slate-500">Lewat Reset</p>
+                <h3 class="mt-3 text-3xl font-bold text-[#7B1E1E]">{{ $lewatReset }}</h3>
+                <p class="mt-1 text-xs text-slate-400 group-hover:text-[#7B1E1E] transition-colors">Lihat detail →</p>
             </a>
 
             <a href="{{ route('admin.reminders.index') }}"
-               class="block rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-                <p class="text-sm text-gray-500">Segera Habis</p>
-                <h3 class="mt-2 text-3xl font-bold text-yellow-600">{{ $segeraHabis }}</h3>
+               class="group block rounded-2xl bg-white border border-slate-100 p-5 shadow-sm hover:shadow-md hover:border-[#7B1E1E]/20 transition-all duration-200">
+                <p class="text-sm font-medium text-slate-500">Segera Habis</p>
+                <h3 class="mt-3 text-3xl font-bold text-[#7B1E1E]">{{ $segeraHabis }}</h3>
+                <p class="mt-1 text-xs text-slate-400 group-hover:text-[#7B1E1E] transition-colors">Lihat detail →</p>
             </a>
 
             <a href="{{ route('admin.reminders.index') }}"
-               class="block rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-                <p class="text-sm text-gray-500">Sudah Habis</p>
-                <h3 class="mt-2 text-3xl font-bold text-red-600">{{ $sudahHabis }}</h3>
+               class="group block rounded-2xl bg-white border border-slate-100 p-5 shadow-sm hover:shadow-md hover:border-[#7B1E1E]/20 transition-all duration-200">
+                <p class="text-sm font-medium text-slate-500">Sudah Habis</p>
+                <h3 class="mt-3 text-3xl font-bold text-[#7B1E1E]">{{ $sudahHabis }}</h3>
+                <p class="mt-1 text-xs text-slate-400 group-hover:text-[#7B1E1E] transition-colors">Lihat detail →</p>
             </a>
         </div>
 
-        <div class="grid grid-cols-1 gap-6 xl:grid-cols-2">
-            <div class="rounded-2xl bg-white p-6 shadow-sm">
-                <div class="mb-4 flex items-center justify-between">
-                    <h3 class="text-lg font-bold text-[#7B1E1E]">Reset Terdekat</h3>
+        {{-- Detail Panels --}}
+        <div class="grid grid-cols-1 gap-5 xl:grid-cols-2">
+            {{-- Reset Terdekat --}}
+            <div class="rounded-2xl bg-white border border-slate-100 shadow-sm overflow-hidden">
+                <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+                    <h3 class="text-sm font-semibold text-slate-800">Reset Terdekat</h3>
                     <a href="{{ route('admin.netflix-accounts.index') }}"
-                       class="text-sm font-medium text-[#7B1E1E] hover:underline">
+                       class="text-xs font-medium text-[#7B1E1E] hover:underline">
                         Lihat Semua
                     </a>
                 </div>
 
-                <div class="space-y-3">
+                <div class="divide-y divide-slate-50">
                     @forelse ($resetTerdekat as $item)
-                        <div class="rounded-xl border border-gray-200 p-4">
+                        <div class="px-5 py-4 hover:bg-slate-50 transition-colors">
                             <div class="flex items-start justify-between gap-3">
-                                <div>
-                                    <p class="font-semibold text-gray-800">{{ $item->email }}</p>
-                                    <p class="mt-1 text-sm text-gray-500">{{ $item->tipe_sharing }}</p>
+                                <div class="min-w-0">
+                                    <p class="text-sm font-semibold text-slate-800 truncate">{{ $item->email }}</p>
+                                    <p class="text-xs text-slate-400 mt-0.5">{{ $item->tipe_sharing }}</p>
                                 </div>
-                                <span class="inline-flex rounded-full px-3 py-1 text-xs font-medium {{ $item->status_reset['class'] }}">
+
+                                <span class="shrink-0 inline-flex rounded-full border border-[#7B1E1E]/10 bg-[#7B1E1E]/5 px-2.5 py-1 text-xs font-medium text-[#7B1E1E]">
                                     {{ $item->status_reset['label'] }}
                                 </span>
                             </div>
 
-                            <p class="mt-3 text-sm text-gray-600">
-                                Tanggal Reset:
-                                <span class="font-medium">
-                                    {{ \Carbon\Carbon::parse($item->tanggal_reset)->format('d/m/Y') }}
-                                </span>
-                            </p>
+                            <div class="mt-2 flex items-center justify-between">
+                                <p class="text-xs text-slate-500">
+                                    Reset:
+                                    <span class="font-medium text-slate-700">
+                                        {{ \Carbon\Carbon::parse($item->tanggal_reset)->format('d/m/Y') }}
+                                    </span>
+                                </p>
 
-                            <div class="mt-4">
                                 <a href="{{ route('admin.netflix-accounts.edit', $item->id) }}"
-                                   class="inline-flex rounded-lg bg-[#7B1E1E] px-3 py-2 text-xs font-medium text-white hover:opacity-90">
+                                   class="inline-flex rounded-lg bg-[#7B1E1E] px-2.5 py-1.5 text-xs font-medium text-white hover:opacity-90">
                                     Edit
                                 </a>
                             </div>
                         </div>
                     @empty
-                        <div class="rounded-xl border border-dashed border-gray-300 p-4 text-sm text-gray-500">
-                            Belum ada data tanggal reset.
+                        <div class="px-5 py-8 text-center">
+                            <p class="text-sm text-slate-400">Belum ada data tanggal reset.</p>
                         </div>
                     @endforelse
                 </div>
             </div>
 
-            <div class="rounded-2xl bg-white p-6 shadow-sm">
-                <div class="mb-4 flex items-center justify-between">
-                    <h3 class="text-lg font-bold text-[#7B1E1E]">Durasi Habis Terdekat</h3>
+            {{-- Durasi Habis Terdekat --}}
+            <div class="rounded-2xl bg-white border border-slate-100 shadow-sm overflow-hidden">
+                <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+                    <h3 class="text-sm font-semibold text-slate-800">Durasi Habis Terdekat</h3>
                     <a href="{{ route('admin.netflix-week-accounts.index') }}"
-                       class="text-sm font-medium text-[#7B1E1E] hover:underline">
+                       class="text-xs font-medium text-[#7B1E1E] hover:underline">
                         Lihat Semua
                     </a>
                 </div>
 
-                <div class="space-y-3">
+                <div class="divide-y divide-slate-50">
                     @forelse ($habisTerdekat as $item)
-                        <div class="rounded-xl border border-gray-200 p-4">
+                        <div class="px-5 py-4 hover:bg-slate-50 transition-colors">
                             <div class="flex items-start justify-between gap-3">
-                                <div>
-                                    <p class="font-semibold text-gray-800">{{ $item->email }}</p>
-                                    <p class="mt-1 text-sm text-gray-500">
-                                        Tanggal Terjual:
-                                        {{ $item->tanggal_terjual ? \Carbon\Carbon::parse($item->tanggal_terjual)->format('d/m/Y') : '-' }}
+                                <div class="min-w-0">
+                                    <p class="text-sm font-semibold text-slate-800 truncate">{{ $item->email }}</p>
+                                    <p class="text-xs text-slate-400 mt-0.5">
+                                        Terjual: {{ $item->tanggal_terjual ? \Carbon\Carbon::parse($item->tanggal_terjual)->format('d/m/Y') : '-' }}
                                     </p>
                                 </div>
-                                <span class="inline-flex rounded-full px-3 py-1 text-xs font-medium {{ $item->status_habis['class'] }}">
+
+                                <span class="shrink-0 inline-flex rounded-full border border-[#7B1E1E]/10 bg-[#7B1E1E]/5 px-2.5 py-1 text-xs font-medium text-[#7B1E1E]">
                                     {{ $item->status_habis['label'] }}
                                 </span>
                             </div>
 
-                            <p class="mt-3 text-sm text-gray-600">
-                                Durasi Habis:
-                                <span class="font-medium">
-                                    {{ \Carbon\Carbon::parse($item->durasi_habis)->format('d/m/Y') }}
-                                </span>
-                            </p>
+                            <div class="mt-2 flex items-center justify-between">
+                                <p class="text-xs text-slate-500">
+                                    Habis:
+                                    <span class="font-medium text-slate-700">
+                                        {{ \Carbon\Carbon::parse($item->durasi_habis)->format('d/m/Y') }}
+                                    </span>
+                                </p>
 
-                            <div class="mt-4">
                                 <a href="{{ route('admin.netflix-week-accounts.edit', $item->id) }}"
-                                   class="inline-flex rounded-lg bg-[#7B1E1E] px-3 py-2 text-xs font-medium text-white hover:opacity-90">
+                                   class="inline-flex rounded-lg bg-[#7B1E1E] px-2.5 py-1.5 text-xs font-medium text-white hover:opacity-90">
                                     Edit
                                 </a>
                             </div>
                         </div>
                     @empty
-                        <div class="rounded-xl border border-dashed border-gray-300 p-4 text-sm text-gray-500">
-                            Belum ada data durasi habis.
+                        <div class="px-5 py-8 text-center">
+                            <p class="text-sm text-slate-400">Belum ada data durasi habis.</p>
                         </div>
                     @endforelse
                 </div>
             </div>
         </div>
+
     </div>
 @endsection
