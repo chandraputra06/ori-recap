@@ -210,16 +210,10 @@
 
             <!-- Logo area -->
             <div class="px-5 py-5 border-b border-slate-50 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <div style="width:36px;height:36px;border-radius:10px;background:var(--brand);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-1.5">
-                            <span class="text-sm font-bold text-slate-800 tracking-tight">OriRecap</span>
-                            <span class="logo-dot"></span>
-                        </div>
-                        <p class="text-[10px] text-slate-400 font-medium tracking-widest uppercase">Admin Panel</p>
+                <div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-sm font-bold text-slate-800 tracking-tight">Orinimo Recapitulation</span>
+                        <span class="logo-dot"></span>
                     </div>
                 </div>
                 <button id="close-sidebar" type="button"
@@ -230,8 +224,6 @@
 
             <!-- Navigation -->
             <nav class="flex-1 overflow-y-auto py-2 px-2">
-                <p class="nav-group-label">Menu Utama</p>
-
                 <a href="{{ route('admin.dashboard') }}"
                     class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                     <span class="nav-icon">
