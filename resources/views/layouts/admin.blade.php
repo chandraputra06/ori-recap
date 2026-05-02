@@ -18,7 +18,6 @@
 
         body {
             background: #f5f6fa;
-            font-family: ui-sans-serif, system-ui, sans-serif;
             color: #1e293b;
         }
 

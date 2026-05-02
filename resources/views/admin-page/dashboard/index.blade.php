@@ -5,7 +5,6 @@
 
 @section('content')
 <style>
-    /* Stat card number counter feel */
     .stat-num {
         font-size: 2rem;
         font-weight: 800;
@@ -21,25 +20,22 @@
         box-shadow: 0 12px 32px rgba(0,0,0,0.09);
     }
     .stat-icon {
-        width: 40px; height: 40px;
-        border-radius: 12px;
+        width: 38px; height: 38px;
+        border-radius: 10px;
         display: flex; align-items: center; justify-content: center;
         flex-shrink: 0;
     }
-    /* Panel rows */
     .detail-row {
         transition: background .15s;
     }
     .detail-row:hover {
         background: #f8fafc;
     }
-    /* Section heading bar */
     .section-bar {
         width: 3px; height: 18px;
         background: #7B1E1E;
         border-radius: 2px;
     }
-    /* Animated entrance for stat cards */
     @keyframes statIn {
         from { opacity: 0; transform: translateY(16px); }
         to   { opacity: 1; transform: translateY(0); }
@@ -49,16 +45,35 @@
     .stat-card:nth-child(2) { animation-delay: .09s; }
     .stat-card:nth-child(3) { animation-delay: .14s; }
     .stat-card:nth-child(4) { animation-delay: .19s; }
+
+    /* Mini stat cards */
+    .mini-stat {
+        transition: transform .2s ease, box-shadow .2s ease;
+        cursor: pointer;
+    }
+    .mini-stat:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+    }
+
+    /* Panel section */
+    .panel-card {
+        border-radius: 18px;
+        background: #fff;
+        border: 1px solid #f1f5f9;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        overflow: hidden;
+    }
 </style>
 
-<div class="space-y-7">
+<div class="space-y-6">
 
     {{-- ── Welcome strip ── --}}
     <div class="rounded-2xl overflow-hidden relative" style="background: linear-gradient(135deg, #7B1E1E 0%, #9e2a2a 100%);">
         <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 80% 50%, white 1px, transparent 1px); background-size: 20px 20px;"></div>
         <div class="relative px-6 py-5 flex items-center justify-between">
             <div>
-                <p class="text-white/70 text-xs font-medium tracking-wide uppercase">Selamat datang</p>
+                <p class="text-white/60 text-xs font-medium tracking-wide">Selamat datang</p>
                 <h2 class="text-white text-xl font-bold mt-0.5">Sistem Rekapan Orinimo</h2>
             </div>
             <div class="hidden sm:flex items-center gap-1.5 rounded-xl bg-white/15 border border-white/20 px-3 py-2">
@@ -70,7 +85,7 @@
 
     {{-- ── Stats Row 1 ── --}}
     <div>
-        <div class="flex items-center gap-2 mb-4">
+        <div class="flex items-center gap-2 mb-3">
             <div class="section-bar"></div>
             <p class="text-sm font-semibold text-slate-700">Ringkasan Data</p>
         </div>
@@ -79,9 +94,9 @@
             <a href="{{ route('admin.netflix-accounts.index') }}" class="stat-card block rounded-2xl bg-white border border-slate-100 p-5 shadow-sm">
                 <div class="flex items-start justify-between mb-4">
                     <div class="stat-icon bg-red-50">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7B1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 10c0 3.866-3 7-3 7s-3-3.134-3-7a3 3 0 0 1 6 0Z"/><circle cx="12" cy="10" r="1"/></svg>
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#7B1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 10c0 3.866-3 7-3 7s-3-3.134-3-7a3 3 0 0 1 6 0Z"/><circle cx="12" cy="10" r="1"/></svg>
                     </div>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </div>
                 <div class="stat-num text-slate-800">{{ $totalNetflixAccounts }}</div>
                 <p class="mt-1.5 text-xs text-slate-400 font-medium">Total Rekapan Netflix</p>
@@ -90,9 +105,9 @@
             <a href="{{ route('admin.netflix-week-accounts.index') }}" class="stat-card block rounded-2xl bg-white border border-slate-100 p-5 shadow-sm">
                 <div class="flex items-start justify-between mb-4">
                     <div class="stat-icon bg-red-50">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7B1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="m9 16 2 2 4-4"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#7B1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="m9 16 2 2 4-4"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
                     </div>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </div>
                 <div class="stat-num text-slate-800">{{ $totalNetflixWeekAccounts }}</div>
                 <p class="mt-1.5 text-xs text-slate-400 font-medium">Total Netflix 1 Week</p>
@@ -101,9 +116,9 @@
             <a href="{{ route('admin.reminders.index') }}" class="stat-card block rounded-2xl bg-white border border-slate-100 p-5 shadow-sm">
                 <div class="flex items-start justify-between mb-4">
                     <div class="stat-icon bg-orange-50">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
                     </div>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </div>
                 <div class="stat-num text-orange-500">{{ $resetHariIni }}</div>
                 <p class="mt-1.5 text-xs text-slate-400 font-medium">Reset Hari Ini</p>
@@ -112,9 +127,9 @@
             <a href="{{ route('admin.reminders.index') }}" class="stat-card block rounded-2xl bg-white border border-slate-100 p-5 shadow-sm">
                 <div class="flex items-start justify-between mb-4">
                     <div class="stat-icon bg-red-50">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
                     </div>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </div>
                 <div class="stat-num text-red-500">{{ $habisHariIni }}</div>
                 <p class="mt-1.5 text-xs text-slate-400 font-medium">Habis Hari Ini</p>
@@ -122,35 +137,35 @@
         </div>
     </div>
 
-    {{-- ── Stats Row 2 ── --}}
+    {{-- ── Stats Row 2: Mini badges ── --}}
     <div class="grid grid-cols-2 gap-3 xl:grid-cols-4">
 
-        <a href="{{ route('admin.reminders.index') }}" class="stat-card block rounded-2xl bg-white border border-slate-100 p-4 shadow-sm">
-            <div class="flex items-center gap-2 mb-3">
+        <a href="{{ route('admin.reminders.index') }}" class="mini-stat block rounded-2xl bg-white border border-slate-100 p-4 shadow-sm">
+            <div class="flex items-center gap-2 mb-2.5">
                 <span class="w-2 h-2 rounded-full bg-yellow-400 flex-shrink-0"></span>
                 <p class="text-xs text-slate-400 font-medium">Segera Reset</p>
             </div>
             <div class="stat-num" style="font-size:1.6rem;color:#eab308;">{{ $segeraReset }}</div>
         </a>
 
-        <a href="{{ route('admin.reminders.index') }}" class="stat-card block rounded-2xl bg-white border border-slate-100 p-4 shadow-sm">
-            <div class="flex items-center gap-2 mb-3">
+        <a href="{{ route('admin.reminders.index') }}" class="mini-stat block rounded-2xl bg-white border border-slate-100 p-4 shadow-sm">
+            <div class="flex items-center gap-2 mb-2.5">
                 <span class="w-2 h-2 rounded-full bg-red-400 flex-shrink-0"></span>
                 <p class="text-xs text-slate-400 font-medium">Lewat Reset</p>
             </div>
             <div class="stat-num" style="font-size:1.6rem;color:#ef4444;">{{ $lewatReset }}</div>
         </a>
 
-        <a href="{{ route('admin.reminders.index') }}" class="stat-card block rounded-2xl bg-white border border-slate-100 p-4 shadow-sm">
-            <div class="flex items-center gap-2 mb-3">
+        <a href="{{ route('admin.reminders.index') }}" class="mini-stat block rounded-2xl bg-white border border-slate-100 p-4 shadow-sm">
+            <div class="flex items-center gap-2 mb-2.5">
                 <span class="w-2 h-2 rounded-full bg-yellow-400 flex-shrink-0"></span>
                 <p class="text-xs text-slate-400 font-medium">Segera Habis</p>
             </div>
             <div class="stat-num" style="font-size:1.6rem;color:#eab308;">{{ $segeraHabis }}</div>
         </a>
 
-        <a href="{{ route('admin.reminders.index') }}" class="stat-card block rounded-2xl bg-white border border-slate-100 p-4 shadow-sm">
-            <div class="flex items-center gap-2 mb-3">
+        <a href="{{ route('admin.reminders.index') }}" class="mini-stat block rounded-2xl bg-white border border-slate-100 p-4 shadow-sm">
+            <div class="flex items-center gap-2 mb-2.5">
                 <span class="w-2 h-2 rounded-full bg-red-400 flex-shrink-0"></span>
                 <p class="text-xs text-slate-400 font-medium">Sudah Habis</p>
             </div>
@@ -162,7 +177,7 @@
     <div class="grid grid-cols-1 gap-5 xl:grid-cols-2">
 
         {{-- Reset Terdekat --}}
-        <div class="rounded-2xl bg-white border border-slate-100 shadow-sm overflow-hidden">
+        <div class="panel-card">
             <div class="px-5 py-4 border-b border-slate-50 flex items-center justify-between">
                 <div class="flex items-center gap-2.5">
                     <div class="section-bar" style="height:14px;"></div>
@@ -210,7 +225,7 @@
         </div>
 
         {{-- Durasi Habis Terdekat --}}
-        <div class="rounded-2xl bg-white border border-slate-100 shadow-sm overflow-hidden">
+        <div class="panel-card">
             <div class="px-5 py-4 border-b border-slate-50 flex items-center justify-between">
                 <div class="flex items-center gap-2.5">
                     <div class="section-bar" style="height:14px;"></div>

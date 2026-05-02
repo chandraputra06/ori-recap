@@ -7,7 +7,6 @@
 <style>
     .section-bar { width:3px;height:18px;background:#7B1E1E;border-radius:2px; }
 
-    /* Reminder panel */
     .reminder-panel {
         border-radius: 18px;
         background: #fff;
@@ -20,12 +19,10 @@
         box-shadow: 0 6px 20px rgba(0,0,0,0.07);
     }
 
-    /* Panel header variants */
     .panel-header-orange { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-bottom: 1px solid #fed7aa; }
     .panel-header-yellow { background: linear-gradient(135deg, #fefce8, #fef9c3); border-bottom: 1px solid #fde68a; }
     .panel-header-red    { background: linear-gradient(135deg, #fff1f2, #fee2e2); border-bottom: 1px solid #fecaca; }
 
-    /* Item row */
     .reminder-item {
         padding: 14px 16px;
         transition: background .12s;
@@ -34,7 +31,6 @@
     .reminder-item:last-child { border-bottom: none; }
     .reminder-item:hover { background: #fafbff; }
 
-    /* Badge dot */
     .status-dot {
         width: 8px; height: 8px;
         border-radius: 50%;
@@ -42,7 +38,6 @@
         display: inline-block;
     }
 
-    /* Action btns inside reminder */
     .btn-sm-primary {
         border-radius: 8px; background: #7B1E1E;
         padding: 5px 12px; font-size: .6875rem; font-weight: 500; color: #fff;
@@ -58,7 +53,6 @@
     }
     .btn-sm-outline:hover { background: rgba(123,30,30,0.05); }
 
-    /* Section group entrance */
     @keyframes sectionIn {
         from { opacity: 0; transform: translateY(16px); }
         to   { opacity: 1; transform: translateY(0); }
@@ -69,7 +63,6 @@
     .section-group:nth-child(1) { animation-delay: .05s; }
     .section-group:nth-child(3) { animation-delay: .12s; }
 
-    /* Panel entrance stagger */
     @keyframes panelIn {
         from { opacity: 0; transform: translateY(10px); }
         to   { opacity: 1; transform: translateY(0); }
@@ -79,13 +72,11 @@
     .panel-col:nth-child(2) .reminder-panel { animation-delay: .12s; }
     .panel-col:nth-child(3) .reminder-panel { animation-delay: .19s; }
 
-    /* Divider */
     .section-divider {
         height: 1px;
         background: linear-gradient(90deg, transparent, #e2e8f0 20%, #e2e8f0 80%, transparent);
     }
 
-    /* Empty state */
     .empty-reminder {
         padding: 28px 16px;
         text-align: center;
@@ -98,7 +89,6 @@
         margin: 0 auto 8px;
     }
 
-    /* Count badge */
     .count-chip {
         display: inline-flex; align-items: center; justify-content: center;
         min-width: 20px; height: 20px;
